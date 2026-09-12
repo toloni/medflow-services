@@ -1,4 +1,4 @@
-package com.medflow.appointmentservice.domain;
+package com.medflow.appointmentservice.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,6 +6,8 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/// A person who can be scheduled for appointments, linked one-to-one to its
+/// [User] account.
 @Entity
 @Table(name = "patients")
 @Getter

@@ -1,0 +1,5 @@
+### Listar todos os lembretes
+GET http://localhost:8081/api/notifications
+
+### Listar lembretes de um paciente especifico 
+GET http://localhost:8081/api/notifications/patient/11111111-1111-1111-1111-111111111111

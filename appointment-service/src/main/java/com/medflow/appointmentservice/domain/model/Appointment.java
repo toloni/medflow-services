@@ -1,4 +1,4 @@
-package com.medflow.appointmentservice.domain;
+package com.medflow.appointmentservice.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,6 +6,9 @@ import lombok.*;
 import java.time.Instant;
 import java.util.UUID;
 
+/// A scheduled meeting between a [Patient] and a [Doctor]. Defaults to
+/// [AppointmentStatus#SCHEDULED] on creation, and tracks its own
+/// creation/update timestamps via JPA lifecycle callbacks.
 @Entity
 @Table(name = "appointments")
 @Getter
@@ -48,6 +51,8 @@ public class Appointment {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
+    /// Stamps creation/update timestamps and defaults the status before the
+    /// entity is first persisted.
     @PrePersist
     protected void onCreate() {
         Instant now = Instant.now();
@@ -58,6 +63,7 @@ public class Appointment {
         }
     }
 
+    /// Refreshes the update timestamp before each modification is persisted.
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = Instant.now();

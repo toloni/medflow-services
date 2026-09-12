@@ -1,0 +1,28 @@
+type Query {
+    "All recorded appointment history entries, most recent first."
+    appointmentHistories: [AppointmentHistoryEntry!]!
+
+    "Full timeline of a single appointment, in chronological order."
+    appointmentHistoryByAppointment(appointmentId: ID!): [AppointmentHistoryEntry!]!
+
+    "History entries for every appointment of a given patient, most recent first."
+    appointmentHistoriesByPatient(patientId: ID!): [AppointmentHistoryEntry!]!
+}
+
+type AppointmentHistoryEntry {
+    id: ID!
+    appointmentId: ID!
+    patientId: ID!
+    patientName: String!
+    doctorId: ID!
+    doctorName: String
+    scheduledAt: String
+    eventType: AppointmentEventType!
+    status: String!
+    recordedAt: String!
+}
+
+enum AppointmentEventType {
+    APPOINTMENT_CREATED
+    APPOINTMENT_UPDATED
+}

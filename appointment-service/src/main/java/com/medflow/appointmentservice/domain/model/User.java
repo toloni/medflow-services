@@ -1,10 +1,12 @@
-package com.medflow.appointmentservice.domain;
+package com.medflow.appointmentservice.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
 
+/// An authenticatable account, either a [Doctor], a [Patient], or an
+/// unassociated staff member (e.g. a nurse), distinguished by [Role].
 @Entity
 @Table(name = "users")
 @Getter

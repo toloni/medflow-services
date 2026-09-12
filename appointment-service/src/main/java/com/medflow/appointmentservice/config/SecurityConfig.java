@@ -1,4 +1,4 @@
-package com.medflow.appointmentservice.security;
+package com.medflow.appointmentservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+/// Configures HTTP security: stateless, CSRF-disabled, HTTP Basic
+/// authentication with role-based authorization on the appointments API.
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {

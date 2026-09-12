@@ -1,14 +1,16 @@
-package com.medflow.appointmentservice.security;
+package com.medflow.appointmentservice.adapter.in.security;
 
 
-import com.medflow.appointmentservice.domain.User;
-import com.medflow.appointmentservice.repository.UserRepository;
+import com.medflow.appointmentservice.adapter.out.persistence.UserRepository;
+import com.medflow.appointmentservice.domain.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/// Loads users for Spring Security authentication by username, backed by the
+/// JPA [UserRepository].
 @Service
 @RequiredArgsConstructor
 public class AppUserDetailsService implements UserDetailsService {
@@ -19,7 +21,7 @@ public class AppUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(
-                        "Usuário não encontrado: " + username));
+                        "User not found: " + username));
         return new AppUserDetails(user);
     }
 }

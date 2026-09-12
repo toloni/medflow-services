@@ -1,10 +1,12 @@
-package com.medflow.appointmentservice.domain;
+package com.medflow.appointmentservice.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.UUID;
 
+/// A medical professional who can be assigned to appointments, linked
+/// one-to-one to its [User] account.
 @Entity
 @Table(name = "doctors")
 @Getter
