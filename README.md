@@ -1,7 +1,7 @@
 # MedFlow Services
 
 **MedFlow is a microservices-based backend** for scheduling medical appointments, built with Spring Boot and
-communicating asynchronously via Kafka. Tech Challenge project — Phase 3 (Java Architecture and Development).
+communicating asynchronously via Kafka.
 
 ## Overview
 
@@ -49,9 +49,8 @@ flowchart LR
 
 ### When is a reminder sent?
 
-The reminder is reactive to the event — there is no scheduling based on appointment proximity (that's out of scope
-for a notification service: "when to remind" belongs to the scheduling domain, notification-service only delivers).
-The message varies by event:
+The reminder is reactive to the event — it is sent as soon as the event is received, not scheduled based on
+appointment proximity. The message varies by event:
 
 | Event received          | `status` in payload   | Message sent                          |
 |--------------------------|------------------------|----------------------------------------|
